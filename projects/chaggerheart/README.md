@@ -4,11 +4,19 @@
 
 ## The Problem
 
-Daggerheart launched in March 2025 with no digital tooling. Character management lives in fillable PDFs and shared spreadsheets. GMs who want to run official campaign frames (genre-specific rule expansions like horror, political intrigue, or monster hunting) have no way to surface those mechanics to players without constant manual reference. The gap between the game's mechanical depth and its available tools is wide open.
+People engage in role-playing with their communities for the same reason they engage in theater, improv, and creative writing: to inhabit someone else's skin for a few hours. A shy accountant becomes a silver-tongued bard. A stressed-out nurse becomes a guardian standing between her friends and a god. The table becomes a stage, the dice add stakes, and for a few hours the real world recedes. That release, that freedom to perform and create and surprise each other, is why millions of people play.
+
+Then someone has to look up a modifier. A player stops mid-scene to check a reference document for what their ability does. The game master pauses the scene to calculate armor. The spell breaks. After the session, the game master spends hours writing notes, updating character sheets, and reconstructing what happened so the next session can pick up where this one left off. Most campaigns don't die from bad stories. They die from the logistics between them.
+
+Daggerheart was designed to address the rules side of this. It strips mechanical overhead so players can stay in character and game masters can stay in the narrative. But the tooling never caught up. Characters still live in fillable PDFs. The game made space for immersion. The tools keep interrupting it.
 
 ## The Solution
 
-Chaggerheart is a full-stack web app for creating, managing, and playing Daggerheart characters in real time. Players build characters through a guided wizard, track abilities and equipment on a mobile-first character sheet, and roll dice with mechanical effects applied automatically. GMs activate campaign frames that inject genre-specific panels, trackers, and minigames into every player's sheet. A homebrew workshop lets players author custom abilities using the same engine that powers official content.
+Chaggerheart picks up where the game design left off. It's a web app built around a single principle: automation frees you to play.
+
+Everything that pulls a player out of character, the app handles. Abilities resolve on tap. Dice rolls apply their mechanical effects automatically. Character sheets live on the phone in your hand at the table, not in a binder you have to flip through. For game masters (the player who runs the world, controls the story, and manages every non-player character at the table), the dashboard shows the whole party's state in real time, so running a scene never means breaking it to ask "wait, how much HP do you have?"
+
+The biggest intervention is after the session ends. A Discord bot records session audio and runs it through a 5-agent AI pipeline that writes structured notes, recaps, and game-master-only plot summaries. The hours of post-session homework that quietly kill campaigns become an 8-second processing job. The game master stays in creative control. The app handles everything that isn't storytelling.
 
 ![Character Sheet](screenshots/character-sheet.png)
 
