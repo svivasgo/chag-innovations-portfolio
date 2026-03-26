@@ -1,0 +1,43 @@
+{
+  "id": "homebrew_flame_burst",
+  "version": "1.0.0",
+  "meta": {
+    "name": "Flame Burst",
+    "summary": "Channel inner fire to grant bonus damage on your next attack. Costs 1 Hope to activate.",
+    "source": "homebrew",
+    "containerContext": "ability",
+    "containerType": "class"
+  },
+  "actions": [
+    {
+      "id": "activate",
+      "label": "Channel Flame",
+      "variant": "primary",
+      "conditions": [
+        { "type": "not_active", "flag": "flameBurstActive" },
+        { "type": "resource_available", "resource": "hope", "amount": 1 }
+      ],
+      "costs": [
+        { "type": "spend_hope", "amount": 1 }
+      ],
+      "effects": [
+        { "type": "set_character_flag", "flag": "flameBurstActive", "value": true },
+        { "type": "set_advantage", "trait": "Strength" },
+        { "type": "show_toast", "message": "Flame Burst active! Advantage on next Strength roll." }
+      ]
+    },
+    {
+      "id": "deactivate",
+      "label": "Release Flame",
+      "variant": "secondary",
+      "conditions": [
+        { "type": "is_active", "flag": "flameBurstActive" }
+      ],
+      "costs": [],
+      "effects": [
+        { "type": "clear_character_flag", "flag": "flameBurstActive" },
+        { "type": "show_toast", "message": "Flame Burst deactivated." }
+      ]
+    }
+  ]
+}
