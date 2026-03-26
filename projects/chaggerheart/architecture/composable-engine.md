@@ -66,8 +66,8 @@ Every mechanic in the registry has a deterministic key computed by `computeRegis
 
 | Mechanic Type | Key Format | Example |
 |---------------|-----------|---------|
-| SRD ability | `ability:{type}:{source}:{name}` | `ability:class:Wizard:Prestidigitation` |
-| SRD domain card | kebab-case slug | `towering-stalk` |
+| SRD ability | `ability:{type}:{source}:{name}` | `ability:class:Wizard:Flame Burst` |
+| SRD domain card | kebab-case slug | `iron-bark-shield` |
 | Homebrew ability | `ability:homebrew:homebrew:{name}` | `ability:homebrew:homebrew:Crystal Resonance` |
 | Homebrew domain card | `hb-{slug}` | `hb-crystal-resonance` |
 
