@@ -13,5 +13,5 @@ Santiago founded Chag Innovations to build the products he wanted to use. He wri
 ## Links
 
 - [LinkedIn](https://www.linkedin.com/in/santiagovivas/)
-- [Portfolio](https://chagcorp.com)
+- [Portfolio](https://svivas.web.app/)
 - [Chaggerheart](https://chaggerheart.com)
