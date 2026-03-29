@@ -18,9 +18,25 @@ Everything that pulls a player out of character, the app handles. Abilities reso
 
 The biggest intervention is after the session ends. A Discord bot records session audio and runs it through a 5-agent AI pipeline that writes structured notes, recaps, and game-master-only plot summaries. The hours of post-session homework that quietly kill campaigns become an 8-second processing job. The game master stays in creative control. The app handles everything that isn't storytelling.
 
-![Character Sheet](screenshots/character-sheet.png)
+![Character sheet with auto-resolving abilities and real-time state](screenshots/character-sheet.png)
+*Character sheet: abilities resolve on tap, dice rolls apply effects automatically, inventory and HP track in real time.*
 
 The app is live at [chaggerheart.com](https://chaggerheart.com), built and shipped by a solo founder with no engineering team.
+
+## Traction
+
+All organic, zero marketing spend. Users found the app through Daggerheart community channels (Discord servers, Reddit, word of mouth).
+
+| Metric | Value |
+|--------|-------|
+| Registered users | 82 |
+| Activation rate (created 1+ character) | 61% |
+| Characters created | 52 (across all 9 classes) |
+| Campaigns launched | 11 |
+| In-app feedback submissions | 29 |
+| Peak monthly active users | 32 (December 2025) |
+
+Character class distribution is roughly even across all nine classes, which suggests the builder handles the full breadth of the game system rather than funneling users toward a few well-supported options.
 
 ## Key Product Decisions
 
@@ -44,9 +60,11 @@ Daggerheart ships six official campaign frames, each with unique mechanics. Impl
 
 Instead, the system uses a [registry of 14 reusable pattern components](architecture/campaign-frames.md) (ResourceHarvest, TokenPool, FlavorCooking, FactionRelations, ColossalAdversary, and nine others). Frame configs declare which patterns to use and where they appear. Adding a new frame that fits existing patterns requires zero new React components: just a JSON entry for static data and a config entry for behavior. An audit script validates nine structural rules on every commit.
 
-![Campaign Dashboard](screenshots/campaign-dashboard.png)
+![Campaign dashboard showing full party state during a live session](screenshots/campaign-dashboard.png)
+*GM dashboard: real-time view of every character's HP, stress, armor, and active effects during a session.*
 
-![Beast Feast Minigame](screenshots/beast-feast.png)
+![Beast Feast cooking minigame with recipe crafting interface](screenshots/beast-feast.png)
+*Beast Feast: a campaign-frame-specific cooking minigame built entirely from reusable pattern components.*
 
 ### Automated compliance tooling
 
