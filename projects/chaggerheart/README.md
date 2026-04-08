@@ -38,6 +38,27 @@ All organic, zero marketing spend. Users found the app through Daggerheart commu
 
 Character class distribution is roughly even across all nine classes, which suggests the builder handles the full breadth of the game system rather than funneling users toward a few well-supported options.
 
+## Market Context
+
+The initial assumption was that no digital tooling existed for Daggerheart. A competitive analysis in October 2025 revealed 15+ active competitors, from free community tools (Daggerstack, HeartSmith, FreshCutGrass) to the official Demiplane Nexus platform ($34.99 + subscription). The market was more crowded than expected.
+
+Two findings shaped the product strategy:
+
+1. **Zero competitors had AI features.** Every tool in the space offered static character sheets and reference lookups. None automated session notes, offered AI-assisted content creation, or used machine learning for balance analysis. AI became the primary differentiation axis.
+
+2. **Session management was an open gap.** Seven of eight analyzed competitors had no session note system at all. Demiplane announced a "GM Journal" feature in mid-2025 that hadn't shipped four months later. Chaggerheart's Chronicle pipeline (Discord audio recording through LangGraph-powered note generation) addressed the one pain point that no competitor was solving.
+
+The competitive landscape validated the product direction and accelerated AI development. Rather than competing on character sheet features where free tools already had traction, the roadmap shifted toward session intelligence and user-created content, areas where the composable engine architecture and AI pipeline created a defensible advantage.
+
+## How Users Shaped the Product
+
+With 29 in-app feedback submissions and direct observation from live play sessions, user input drove several design decisions:
+
+- **The Homebrew Workshop UX.** Early prototypes used a single form with all fields visible. User testing showed players freezing when confronted with 20+ configuration options at once. The 7-step wizard design came directly from watching users struggle with the form approach.
+- **The Brewmaster's role.** Players who understood game mechanics wanted the structured wizard. Players who didn't wanted to describe abilities in natural language. Rather than choosing one audience, the Brewmaster bridges them: conversational AI translates intent into structured configs, then hands off to the wizard for final control.
+- **Character class coverage.** Tracking that characters were distributed roughly evenly across all nine classes confirmed the builder handled the full breadth of the game system, not just the well-documented options. This was a signal to keep investing in edge-case mechanics rather than polishing the popular paths.
+- **Session note adoption.** GMs reported that post-session homework was the primary reason campaigns died. The Chronicle pipeline's 8-second processing time wasn't an engineering target for its own sake; it was calibrated against the user behavior of checking notes immediately after a session ends.
+
 ## Key Product Decisions
 
 ### Composable mechanic engine over hardcoded features
@@ -91,7 +112,9 @@ graph TB
 
     subgraph "AI Services"
         GEMINI[Gemini 2.0 Flash]
+        GEMINI25[Gemini 2.5]
         IMAGEN[Imagen 3]
+        SDXL[Replicate SDXL]
         LANGGRAPH[LangGraph Pipeline]
     end
 
@@ -101,7 +124,9 @@ graph TB
     HOST --> FS
     HOST --> RTDB
     CF --> GEMINI
+    CF --> GEMINI25
     CF --> IMAGEN
+    CF --> SDXL
     BOT -->|HTTP POST| LANGGRAPH
     LANGGRAPH --> FS
 ```
@@ -112,13 +137,15 @@ The React frontend communicates with Firebase for auth, persistence, and real-ti
 
 The [Chronicle pipeline](ai-pipeline/) is a 5-agent LangGraph workflow that transforms raw session transcripts into structured notes. An Extraction agent parses the transcript into typed game events. An Analysis agent identifies story beats, character moments, and GM-sensitive information. A Formatting agent writes the prose. A Summary agent generates a "Previously On..." recap. A GM Filter agent splits the output into player-safe notes and GM-only notes that include plot-sensitive details.
 
-Beyond session analysis, Gemini 2.0 Flash powers three other features: homebrew balance checking (comparing user-created mechanics against the SRD corpus), a Brewmaster NPC chat that helps users describe abilities before handing off to the structured wizard, and AI recipe generation for the Beast Feast campaign frame's cooking minigame. Imagen 3 generates scene illustrations from character and setting descriptions.
+Beyond session analysis, four other AI features serve distinct product needs: a [Brewmaster NPC chat](homebrew-workshop.md) that helps users design homebrew mechanics through natural language conversation, homebrew balance checking that compares user-created content against the official game corpus, AI recipe generation for the Beast Feast cooking minigame, and character portrait generation via Imagen 3. Each feature uses a different model and interaction pattern, chosen based on the task's complexity, latency requirements, and cost profile. The full [multi-model strategy](ai-pipeline/multi-model-strategy.md) documents the reasoning behind each choice.
+
+The [Homebrew Workshop](homebrew-workshop.md) is the largest AI-integrated feature: a content creation platform where players build custom game mechanics through a 7-step wizard, with AI assistance for translation (natural language to structured config) and balance feedback. Homebrew content runs on the same engine as official content, with no distinction in rendering or behavior.
 
 ## Delivery and Process
 
-357 story points delivered across 9 sprints at a sustained velocity of ~22 SP/week, as a solo founder handling product, design, engineering, and QA. Velocity stabilized after sprint 3 as codebase patterns compounded. The largest item in any sprint was capped at 8 SP; anything bigger was split. Every story had explicit acceptance criteria, and "done" meant live in production with passing audits.
+500+ story points delivered across 13+ sprints at a sustained velocity of ~22 SP/week, as a solo founder handling product, design, engineering, and QA. 630+ commits spanning 6 months of continuous development. Velocity stabilized after sprint 3 as codebase patterns compounded. The largest item in any sprint was capped at 8 SP; anything bigger was split. Every story had explicit acceptance criteria, and "done" meant live in production with passing audits.
 
-GitHub Issues served as backlog, sprint board, and documentation. No Jira, no Linear. Pre-commit hooks and 90+ automated tests replaced the second pair of eyes that a solo project does not have. Full sprint breakdown and estimation methodology are in the [delivery metrics](delivery/).
+GitHub Issues served as backlog, sprint board, and documentation. No Jira, no Linear. Pre-commit hooks and 350+ automated tests replaced the second pair of eyes that a solo project does not have. Full sprint breakdown and estimation methodology are in the [delivery metrics](delivery/).
 
 ## Quality and Compliance
 

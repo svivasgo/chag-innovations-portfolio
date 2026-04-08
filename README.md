@@ -8,12 +8,12 @@ Tabletop RPGs lose players to logistics, not bad stories. Game masters spend hou
 
 Chaggerheart is a web app that automates the bookkeeping so players stay in character and game masters stay in the narrative. Characters resolve abilities on tap, dice rolls apply their effects automatically, and a 5-agent AI pipeline turns session audio into structured notes in about 8 seconds.
 
-82 registered users with zero marketing spend. 61% activation rate. 52 characters created across all 9 classes. Built and shipped solo, from product strategy through production deployment. 357 story points across 9 sprints.
+82 registered users with zero marketing spend. 61% activation rate. 52 characters created across all 9 classes. Built and shipped solo, from product strategy through production deployment. 500+ story points across 13+ sprints, 630+ commits, 350+ automated tests.
 
 **Live at [chaggerheart.com](https://chaggerheart.com)** | [Full project details](projects/chaggerheart/)
 
 ## Links
 
 - [About the Founder](about.md)
-- [Portfolio Site](https://chagcorp.com)
+- [Portfolio Site](https://svivas.web.app)
 - [LinkedIn](https://www.linkedin.com/in/santiagovivas/)

@@ -4,21 +4,24 @@
 
 | Metric | Value |
 |--------|-------|
-| Total story points delivered | 357 SP |
-| Sprints completed | 9 |
+| Total story points delivered | 500+ SP |
+| Sprints completed | 13+ |
 | Average velocity | ~22 SP / week |
 | Team size | 1 (solo founder) |
-| Backlog size | 75+ GitHub Issues |
-| Automated tests | 90+ |
+| Total commits | 630+ |
+| Backlog size | 200+ GitHub Issues |
+| Automated tests | 350+ |
 | Product status | Live at chaggerheart.com |
 
 ---
 
-## What 357 Story Points Actually Means
+## What 500+ Story Points Actually Means
 
 Story points are estimates of effort relative to complexity. On this project, 1 SP mapped roughly to 30-45 minutes of focused work on a well-understood problem. A 5 SP item typically involved unfamiliar territory: new Firebase patterns, first-time UI components, or mechanics with ambiguous game rules.
 
 At 22 SP per week as a solo founder, that works out to about 2-3 hours of product work per day across design, coding, testing, and deployment. The pace was sustainable because of strict scope discipline: no feature entered a sprint without a clear acceptance condition.
+
+The test suite grew from 90 tests in sprint 9 to 350+ by sprint 13, reflecting the shift toward AI-heavy features where non-deterministic outputs require broader coverage. The backlog expanded from 75 to 200+ issues as user feedback and competitive analysis surfaced new opportunities.
 
 ---
 
@@ -35,8 +38,12 @@ At 22 SP per week as a solo founder, that works out to about 2-3 hours of produc
 | 7 | Composable Mechanic Engine | 26 | JSON-driven ability system; highest technical complexity |
 | 8 | Homebrew Workshop (part 1) | 24 | Wizard-first UX; Firestore homebrew storage |
 | 9 | Homebrew Workshop (part 2) + hardening | 23 | 86% complete; balance check, audit rules, bug triage |
+| 10 | D&D-to-Daggerheart character converter | ~28 | 3-stage AI conversion pipeline, intent-based flow, SRD reverse lookup |
+| 11 | Brewmaster NPC chatbot + session persistence | ~26 | Conversational character creation, section-by-section proposal review |
+| 12 | Homebrew mechanic rendering + dual-path routing | ~24 | Server-side mechanic factory with TDD, domain card merging at character load |
+| 13 | Converter pipeline hardening + e2e testing | ~22 | Domain normalization, variant aliases, structured logging |
 
-Velocity stabilized between sprints 3 and 9. The early acceleration reflects familiarity compounding as the codebase patterns became established.
+Velocity stabilized after sprint 3 and held through sprint 13. The later sprints reflect increasing AI integration complexity, with more work going into prompt engineering, multi-stage pipelines, and test coverage for non-deterministic outputs.
 
 ---
 
@@ -82,7 +89,7 @@ That last point matters: the compliance tooling made "done" verifiable rather th
 | Husky pre-commit hooks | Automated compliance checks on every commit |
 | `npm run audit` | 6-rule deterministic compliance checker |
 | `npm run audit:frames` | 9-rule campaign frame integrity checker |
-| Jest + React Testing Library | 90+ automated tests, run in CI |
+| Jest + React Testing Library | 350+ automated tests, run in CI |
 
 No dedicated sprint tooling (no Jira, no Linear). GitHub Issues provided enough structure for a one-person product team without the overhead.
 
@@ -94,6 +101,6 @@ Running a solo product at this pace requires discipline in a few specific areas:
 
 **Scope control over features.** The party system was deferred even though two features technically needed it. The right call was to ship a broadcast workaround and keep moving. A feature that blocks three sprints waiting for infrastructure is a feature that was scoped incorrectly.
 
-**Automation as a force multiplier.** Pre-commit hooks and audit scripts caught regressions that manual code review would have missed at this pace. The 90+ test suite was not ceremonial; it found real bugs during refactors.
+**Automation as a force multiplier.** Pre-commit hooks and audit scripts caught regressions that manual code review would have missed at this pace. The 350+ test suite was not ceremonial; it found real bugs during refactors.
 
 **Patterns over one-offs.** The domain card pattern registry, the campaign frame pattern registry, and the composed mechanic registry all follow the same architectural idea: define once, reuse everywhere, enforce through tooling. This is what allowed 100+ domain cards and 14 campaign frame types to ship without each one being a net-new engineering problem.
