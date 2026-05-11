@@ -10,7 +10,7 @@
 | Team size | 1 (solo founder) |
 | Total commits | 630+ |
 | Backlog size | 200+ GitHub Issues |
-| Automated tests | 350+ |
+| Automated tests | 1,990 (44 test suites) |
 | Product status | Live at chaggerheart.com |
 
 ---
@@ -21,7 +21,7 @@ Story points are estimates of effort relative to complexity. On this project, 1 
 
 At 22 SP per week as a solo founder, that works out to about 2-3 hours of product work per day across design, coding, testing, and deployment. The pace was sustainable because of strict scope discipline: no feature entered a sprint without a clear acceptance condition.
 
-The test suite grew from 90 tests in sprint 9 to 350+ by sprint 13, reflecting the shift toward AI-heavy features where non-deterministic outputs require broader coverage. The backlog expanded from 75 to 200+ issues as user feedback and competitive analysis surfaced new opportunities.
+The test suite grew substantially across later sprints, reflecting the shift toward AI-heavy features where non-deterministic outputs require broader coverage. By sprint 13, the suite had grown to 1,990 tests across 44 suites. The backlog expanded from 75 to 200+ issues as user feedback and competitive analysis surfaced new opportunities.
 
 ---
 
@@ -89,7 +89,7 @@ That last point matters: the compliance tooling made "done" verifiable rather th
 | Husky pre-commit hooks | Automated compliance checks on every commit |
 | `npm run audit` | 6-rule deterministic compliance checker |
 | `npm run audit:frames` | 9-rule campaign frame integrity checker |
-| Jest + React Testing Library | 350+ automated tests, run in CI |
+| Jest + React Testing Library | 1,990 automated tests, run in CI |
 
 No dedicated sprint tooling (no Jira, no Linear). GitHub Issues provided enough structure for a one-person product team without the overhead.
 
@@ -101,6 +101,6 @@ Running a solo product at this pace requires discipline in a few specific areas:
 
 **Scope control over features.** The party system was deferred even though two features technically needed it. The right call was to ship a broadcast workaround and keep moving. A feature that blocks three sprints waiting for infrastructure is a feature that was scoped incorrectly.
 
-**Automation as a force multiplier.** Pre-commit hooks and audit scripts caught regressions that manual code review would have missed at this pace. The 350+ test suite was not ceremonial; it found real bugs during refactors.
+**Automation as a force multiplier.** Pre-commit hooks and audit scripts caught regressions that manual code review would have missed at this pace. The 1,990 test suite was not ceremonial; it found real bugs during refactors.
 
 **Patterns over one-offs.** The domain card pattern registry, the campaign frame pattern registry, and the composed mechanic registry all follow the same architectural idea: define once, reuse everywhere, enforce through tooling. This is what allowed 100+ domain cards and 14 campaign frame types to ship without each one being a net-new engineering problem.

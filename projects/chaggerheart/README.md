@@ -27,14 +27,19 @@ The app is live at [chaggerheart.com](https://chaggerheart.com), built and shipp
 
 All organic, zero marketing spend. Users found the app through Daggerheart community channels (Discord servers, Reddit, word of mouth).
 
+Public launch was January 25, 2026. Numbers prior to that date reflect internal testing and pre-beta organic discovery; the table below separates post-launch acquisition from lifetime totals to keep the picture honest.
+
 | Metric | Value |
 |--------|-------|
-| Registered users | 82 |
-| Activation rate (created 1+ character) | 61% |
-| Characters created | 52 (across all 9 classes) |
-| Campaigns launched | 11 |
-| In-app feedback submissions | 29 |
-| Peak monthly active users | 32 (December 2025) |
+| Total registered users (lifetime) | 92 |
+| Post-launch organic signups (Jan 25 - May 11, 2026) | 22 |
+| Signup-session character creation rate | 65% |
+| Characters created (lifetime) | 60 (across all 9 classes) |
+| Campaigns launched | 12 |
+| In-app feedback submissions | 30 |
+| Acquisition spend | $0 |
+
+Early users flagged AI-forward branding as a poor fit for the Daggerheart community. The landing page and waitlist copy were rewritten on February 4 to lead with the Homebrew Workshop rather than the AI Chronicle pipeline. **21 of 22 post-launch organic signups (95%) arrived after the rebrand.** The pivot traded immediate AI-themed differentiation for long-term community fit, a tradeoff that played out positively in the acquisition data within 90 days.
 
 Character class distribution is roughly even across all nine classes, which suggests the builder handles the full breadth of the game system rather than funneling users toward a few well-supported options.
 
@@ -44,11 +49,11 @@ The initial assumption was that no digital tooling existed for Daggerheart. A co
 
 Two findings shaped the product strategy:
 
-1. **Zero competitors had AI features.** Every tool in the space offered static character sheets and reference lookups. None automated session notes, offered AI-assisted content creation, or used machine learning for balance analysis. AI became the primary differentiation axis.
+1. **The session chronicle space had formed with 7 competitors** — Archivist AI, Saga20, GM Assistant, CharGen, SessionKeeper, LoreKeeper, Scrybe Quill — all working from raw audio only. None inject structured character or homebrew data into their pipelines before processing. Archivist AI's Foundry VTT integration, the most complete in the market, is output-only: it pushes Archivist-generated narrative into Foundry but does not read actor stats, HP, abilities, or combat data as pipeline input. That integration is the primary technical differentiator: Chaggerheart knows the characters, their homebrew mechanics, and their campaign frame context. The competitors don't.
 
-2. **Session management was an open gap.** Seven of eight analyzed competitors had no session note system at all. Demiplane announced a "GM Journal" feature in mid-2025 that hadn't shipped four months later. Chaggerheart's Chronicle pipeline (Discord audio recording through LangGraph-powered note generation) addressed the one pain point that no competitor was solving.
+2. **No tool bridges AI mechanic generation with functional execution.** Functional system-agnostic sheet builders (Hedron, Alchemy RPG) require human authoring — no AI in the mechanic creation pipeline. AI tools (Jenova, MythWeaver) generate descriptive text that stops at the chat layer — nothing executes. The Composable Mechanic Engine closes that gap: Brewmaster generates structured JSON configs from natural language; the engine executes them on the character sheet. This combination is unoccupied territory as of April 2026.
 
-The competitive landscape validated the product direction and accelerated AI development. Rather than competing on character sheet features where free tools already had traction, the roadmap shifted toward session intelligence and user-created content, areas where the composable engine architecture and AI pipeline created a defensible advantage.
+Rather than competing on character sheet features where free tools already had traction, the roadmap shifted toward session intelligence and user-created content — areas where the composable engine architecture and structured data pipeline created a defensible advantage.
 
 ## How Users Shaped the Product
 
@@ -145,7 +150,7 @@ The [Homebrew Workshop](homebrew-workshop.md) is the largest AI-integrated featu
 
 500+ story points delivered across 13+ sprints at a sustained velocity of ~22 SP/week, as a solo founder handling product, design, engineering, and QA. 630+ commits spanning 6 months of continuous development. Velocity stabilized after sprint 3 as codebase patterns compounded. The largest item in any sprint was capped at 8 SP; anything bigger was split. Every story had explicit acceptance criteria, and "done" meant live in production with passing audits.
 
-GitHub Issues served as backlog, sprint board, and documentation. No Jira, no Linear. Pre-commit hooks and 350+ automated tests replaced the second pair of eyes that a solo project does not have. Full sprint breakdown and estimation methodology are in the [delivery metrics](delivery/).
+GitHub Issues served as backlog, sprint board, and documentation. No Jira, no Linear. Pre-commit hooks and 1,990 automated tests across 44 test suites replaced the second pair of eyes that a solo project does not have. Full sprint breakdown and estimation methodology are in the [delivery metrics](delivery/).
 
 ## Quality and Compliance
 
